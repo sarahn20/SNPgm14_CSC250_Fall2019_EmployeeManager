@@ -3,6 +3,7 @@ package com.example.csc250_fall2019_employeemanager;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -37,32 +38,13 @@ public class EmployeeEntryActivity extends AppCompatActivity
         int height_inches = Integer.parseInt(this.height_inchesET.getText().toString());
 
         Core.theEmployee = new Employee(fname, lname, height_feet, height_inches, age, weight);
-        //int myValue = this.getIntent().getIntExtra("myValue", 0);
-        //Toast.makeText(this, "Employee Created: " + myValue, Toast.LENGTH_LONG).show();
-        //Intent returnBag = new Intent();
-        //returnBag.putExtra("employee_name", this.theEmployee.toString());
-        //this.setResult(Activity.RESULT_OK, returnBag); //notifies screen 1 that a result is included.
-        this.finish();
+        Core.theEmployees.add(Core.theEmployee);
 
-        /*
-        if(Core.theEmployee == null) //this is a new employee
-        {
+        Intent returnBag = new Intent();
+        String mostRecentName = Core.theEmployee.toString();
+        returnBag.putExtra("employee_name", mostRecentName);
+        Toast.makeText(this, "Employee Created: " + Core.theEmployee.toString(), Toast.LENGTH_LONG).show();
+        this.setResult(Activity.RESULT_OK, returnBag); //notifies screen 1 that a result is included.
 
-
-        }
-
-        else //this is an employee we are updating
-        {
-            //this.theEmployee.updateData(fname, lname, height_feet, height_inches, age, weight);
-            this.theEmployee.setFname(fname);
-            this.theEmployee.setLname(lname);
-            this.theEmployee.setAge(age);
-            this.theEmployee.setHeight_feet(height_feet);
-            this.theEmployee.setHeight_inches(height_inches);
-            this.theEmployee.setWeight(weight);
-            Toast.makeText(this, "Employee Updated " + this.theEmployee.toString(), Toast.LENGTH_LONG).show();
-            this.finish();
-        }
-         */
     }
 }
