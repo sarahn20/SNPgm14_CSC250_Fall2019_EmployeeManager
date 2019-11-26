@@ -39,6 +39,7 @@ public class EmployeeEntryActivity extends AppCompatActivity
 
         Core.theEmployee = new Employee(fname, lname, height_feet, height_inches, age, weight);
         Core.theEmployees.add(Core.theEmployee);
+        //EmployeeListActivity.
 
         Intent returnBag = new Intent();
         String mostRecentName = Core.theEmployee.toString();
